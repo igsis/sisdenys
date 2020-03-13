@@ -1,0 +1,23 @@
+{
+    "/css/AdminLTE.css": "/css/AdminLTE.css",
+    "/css/bootstrap.css": "/css/bootstrap.css",
+    "/css/tempusdominus-bootstrap-4.css": "/css/tempusdominus-bootstrap-4.css",
+    "/css/fontawesome.css": "/css/fontawesome.css",
+    "/css/icheck-bootstrap.css": "/css/icheck-bootstrap.css",
+    "/css/OverlayScrollbars.css": "/css/OverlayScrollbars.css",
+    "/css/daterangepicker.css": "/css/daterangepicker.css",
+    "/js/jquery.js": "/js/jquery.js",
+    "/js/jquery-ui.js": "/js/jquery-ui.js",
+    "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
+    "/js/Chart.js": "/js/Chart.js",
+    "/js/sparkline.js": "/js/sparkline.js",
+    "/js/jquery.knob.js": "/js/jquery.knob.js",
+    "/js/moment.js": "/js/moment.js",
+    "/js/daterangepicker.js": "/js/daterangepicker.js",
+    "/js/tempusdominus-bootstrap-4.js": "/js/tempusdominus-bootstrap-4.js",
+    "/js/summernote-bs4.js": "/js/summernote-bs4.js",
+    "/js/jquery.overlayScrollbars.js": "/js/jquery.overlayScrollbars.js",
+    "/js/adminlte.js": "/js/adminlte.js",
+    "/js/dashboard.js": "/js/dashboard.js",
+    "/js/demo.js": "/js/demo.js"
+}
