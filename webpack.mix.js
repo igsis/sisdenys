@@ -12,11 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix
-    .styles('node_modules/@fortawesome/fontawesome-free/css/all.min.css', 'public/css/fontawesome.css')
     .styles('node_modules/icheck-bootstrap/icheck-bootstrap.min.css','public/css/icheck-bootstrap.css')
     .styles('node_modules/overlayscrollbars/css/OverlayScrollbars.min.css','public/css/OverlayScrollbars.css')
     .styles('node_modules/daterangepicker/daterangepicker.css','public/css/daterangepicker.css')
 
+    .sass('node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss', 'public/css/fontawesome.css')
     .sass('node_modules/admin-lte/build/scss/AdminLTE.scss','public/css/AdminLTE.css')
     .sass('node_modules/bootstrap/scss/bootstrap.scss','public/css/bootstrap.css')
     .sass('node_modules/tempusdominus-bootstrap-4/src/sass/tempusdominus-bootstrap-4-build.scss','public/css/tempusdominus-bootstrap-4.css')
