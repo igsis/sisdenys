@@ -15,6 +15,7 @@ mix
     .styles('node_modules/icheck-bootstrap/icheck-bootstrap.min.css','public/css/icheck-bootstrap.css')
     .styles('node_modules/overlayscrollbars/css/OverlayScrollbars.min.css','public/css/OverlayScrollbars.css')
     .styles('node_modules/daterangepicker/daterangepicker.css','public/css/daterangepicker.css')
+    .styles('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css','public/css/dataTables.bootstrap4.css')
 
     .sass('node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss', 'public/css/fontawesome.css')
     .sass('node_modules/admin-lte/build/scss/AdminLTE.scss','public/css/AdminLTE.css')
@@ -36,4 +37,6 @@ mix
     .scripts('node_modules/admin-lte/dist/js/adminlte.js','public/js/adminlte.js')
     .scripts('node_modules/admin-lte/dist/js/pages/dashboard.js','public/js/dashboard.js')
     .scripts('node_modules/admin-lte/dist/js/demo.js','public/js/demo.js')
+    .scripts('node_modules/datatables.net/js/jquery.dataTables.js','public/js/jquery.dataTables.js')
+    .scripts('node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js','public/js/dataTables.bootstrap4.js')
 ;

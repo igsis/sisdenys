@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('css/summernote-bs4.css')}}">
+    @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -159,10 +160,18 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="{{route('home')}}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="fas fa-home"></i>
                             <p>
                                 Home
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('chamados')}}" class="nav-link">
+                            <i class="fas fa-phone-volume"></i>
+                            <p>
+                                Chamados
                             </p>
                         </a>
                     </li>
@@ -175,9 +184,8 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-
         @yield('conteudo')
-
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
@@ -230,6 +238,8 @@
 <script src="{{asset('js/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
+
+@yield('scripts')
 </body>
 </body>
 </html>

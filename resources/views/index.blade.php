@@ -3,9 +3,26 @@
 @section('titulo','Inicio')
 
 @section('conteudo')
-    <div class="row justify-content-center">
-        <div class="col-4 pt-5">
-            <h1>Bem-vindo ao Sisdenys</h1>
-        </div>
-    </div>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row justify-content-center">
+                <div class="col text-center">
+                    <h2>Hello world!</h2>
+                </div>
+            </div>
+
+        </div><!-- /.container-fluid -->
+    </section>
 @endsection
