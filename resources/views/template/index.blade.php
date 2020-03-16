@@ -14,26 +14,18 @@
     <link rel="stylesheet" href="{{asset('css/fontawesome.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{asset('css/tempusdominus-bootstrap-4.css')}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('css/icheck-bootstrap.css')}}">
-{{--    <!-- JQVMap -->--}}
-{{--    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">--}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('css/adminlte.css')}}">
-    <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('css/OverlayScrollbars.css')}}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{asset('css/daterangepicker.css')}}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{asset('css/summernote-bs4.css')}}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{asset('css/sweetalert2.css')}}">
     @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -160,7 +152,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/  " class="nav-link">
                             <i class="fas fa-home"></i>
                             <p>
                                 Home
@@ -214,30 +206,16 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('js/Chart.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{asset('js/sparkline.js')}}"></script>
-{{--<!-- JQVMap -->--}}
-{{--<script src="plugins/jqvmap/jquery.vmap.min.js"></script>--}}
-{{--<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>--}}
-<!-- jQuery Knob Chart -->
-<script src="{{asset('js/jquery.knob.js')}}"></script>
+<script src="{{asset('js/jquery.dataTables.js')}}"></script>
+<script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
 <!-- daterangepicker -->
-<script src="{{asset('js/moment.js')}}"></script>
-<script src="{{asset('js/daterangepicker.js')}}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('js/tempusdominus-bootstrap-4.js')}}"></script>
-<!-- Summernote -->
-<script src="{{asset('js/summernote-bs4.js')}}"></script>
-<!-- overlayScrollbars -->
-<script src="{{asset('js/jquery.overlayScrollbars.js')}}"></script>
+{{--<script src="{{asset('js/moment.js')}}"></script>--}}
+{{--<script src="{{asset('js/daterangepicker.js')}}"></script>--}}
 <!-- AdminLTE App -->
 <script src="{{asset('js/adminlte.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('js/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
+<script src="{{asset('js/sweetalert2.js')}}"></script>
 
 @yield('scripts')
 </body>

@@ -15,6 +15,7 @@ class CreateChamadoAtendimentosTable extends Migration
     {
         Schema::create('chamado_atendimentos', function (Blueprint $table) {
             $table->id();
+
         });
     }
 
