@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTipoAcessosTable extends Migration
+class CreateStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTipoAcessosTable extends Migration
      */
     public function up()
     {
-        Schema::create('tipo_acessos', function (Blueprint $table) {
-            $table->id();
-            $table->string('tipo_acesso');
+        Schema::create('status', function (Blueprint $table) {
+            $table->tinyIncrements('id');
+            $table->string('status',12);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateTipoAcessosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tipo_acessos');
+        Schema::dropIfExists('statuses');
     }
 }

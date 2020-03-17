@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstituicoesTable extends Migration
+class CreateTipoChamadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateInstituicoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('instituicoes', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
+        Schema::create('tipo_chamados', function (Blueprint $table) {
+            $table->tinyIncrements('id');
+            $table->string('tipo_chamado',10);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateInstituicoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instituicoes');
+        Schema::dropIfExists('tipo_chamados');
     }
 }

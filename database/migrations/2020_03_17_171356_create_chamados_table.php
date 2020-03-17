@@ -15,12 +15,12 @@ class CreateChamadosTable extends Migration
     {
         Schema::create('chamados', function (Blueprint $table) {
             $table->id();
-            $table->string('protocolo');
-            $table->string('titulo');
-            $table->string('descricao');
-            $table->string('telefone');
-            $table->tinyInteger('publicado')->default(1);
+            $table->string('protocolo',15);
+            $table->string('titulo',20);
+            $table->text('descricao');
+            $table->string('telefone',15);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
