@@ -2,6 +2,11 @@
 
 namespace App;
 
+use App\Model\Atendentes;
+use App\Model\Chamado;
+use App\Model\Nota;
+use App\Model\TipoAcesso;
+use App\Model\Unidade;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,30 +15,30 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nome', 'email', 'login', 'telefone'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function tipoAcesso(){
+        return $this->hasMany(TipoAcesso::class);
+    }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function unidade()
+    {
+        return $this->hasMany(Unidade::class);
+    }
+
+    public function chamados()
+    {
+        return $this->belongsTo(Chamado::class);
+    }
+
+    public function atendente()
+    {
+        return $this->belongsTo(Atendentes::class);
+    }
+
+    public function nota(){
+        return $this->belongsTo(Nota::class);
+    }
 }
