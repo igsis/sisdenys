@@ -14,7 +14,7 @@ class ChamadoController extends Controller
      */
     public function index()
     {
-        //
+        return view('chamados-usuario');
     }
 
     /**

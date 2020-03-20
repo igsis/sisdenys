@@ -17,4 +17,12 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/chamados','ChamadosController@index')->name('chamados');
+
+//chamados usuario
+Route::get('/chamados','ChamadoController@index')->name('chamados');
+
+//unidades
+Route::get('/unidades','UnidadeController@index')->name('unidades');
+
+//tipo de chamados
+Route::get('/tipoChamados','TipoChamadoController@index')->name('tipoChamado');

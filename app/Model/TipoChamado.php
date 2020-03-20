@@ -15,5 +15,5 @@ class TipoChamado extends Model
     public function chamado()
     {
         return $this->belongsTo(Chamado::class);
-    }
+    }   
 }
