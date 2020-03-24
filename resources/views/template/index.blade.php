@@ -73,7 +73,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('js/demo.js')}}"></script>
 <script src="{{asset('js/sweetalert2.js')}}"></script>
-
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
 @yield('scripts')
 </body>
 </body>
