@@ -11,24 +11,6 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $tipoAcesso = new \App\Model\TipoAcesso();
-        $tipoAcesso->tipo_acesso = 'admin';
-        $tipoAcesso->save();
-
-        $tipoAcesso = new \App\Model\TipoAcesso();
-        $tipoAcesso->tipo_acesso = 'atendente';
-        $tipoAcesso->save();
-
-        $tipoAcesso = new \App\Model\TipoAcesso();
-        $tipoAcesso->tipo_acesso = 'usuario';
-        $tipoAcesso->save();
-
-        $user =  new \App\User();
-        $user->login = 'admin';
-        $user->nome = 'admin';
-        $user->email = 'admin@admin.com.br';
-        $user->telefone = '99999-9999';
-        $user->tipo_acesso = 1;
                 
     }
 }
