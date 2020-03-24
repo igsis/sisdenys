@@ -11,6 +11,9 @@ class Status extends Model
     protected $fillable = [
       'status'
     ];
+
+    public $timestamps = false;
+
     public function chamado()
     {
         return $this->belongsTo(Chamado::class);

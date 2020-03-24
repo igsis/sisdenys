@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Chamado;
+use App\Model\TipoChamado;
 use Illuminate\Http\Request;
 
 class ChamadoUserController extends Controller
@@ -14,8 +15,9 @@ class ChamadoUserController extends Controller
      */
     public function index()
     {
-        $chamados = Chamado::where('')->get();
-        return view('chamados-usuario');
+        $chamados = Chamado::all();
+        $tipoChamado = TipoChamado::all();
+        return view('chamados-usuario', compact('chamados','tipoChamado'));
     }
 
     /**
@@ -36,7 +38,20 @@ class ChamadoUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $chamado =  new Chamado();
+        $chamado->protocolo = " prod" . (rand(1000,8000));
+        $chamado->titulo =  $request->titulo;
+        $chamado->descricao =  $request->descricao;
+        $chamado->telefone =  $request->telefone;
+        $chamado->tipo_chamado_id = $request->tipoChamado;
+        $chamado->status_id = 1;
+        $chamado->user_id = 1;
+
+        dd($chamado);
+        if ($chamado->save()){
+            return redirect()->route('chamados')->with('save','Cadastro de chamado realizado com sucesso.');
+        }
+        return redirect()->route('chamados')->with('error','Erro ao cadastrar chamado, tente novamente mais tarde.');
     }
 
     /**

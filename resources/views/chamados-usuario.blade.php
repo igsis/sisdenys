@@ -74,9 +74,20 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('tipoChamado.cadastrar')}}" method="post">
+                <form action="{{route('chamados.cadastrar')}}" method="post">
                     <div class="modal-body">
                         @csrf
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="tipoChamado">Tipo do chamado</label>
+                                <select name="tipoChamado" id="tipoChamado" class="form-control" required>
+                                    <option value="">Selecione um tipo de chamado</option>
+                                    @foreach($tipoChamado as $tipo)
+                                        <option value="{{$tipo->id}}">{{$tipo->tipo_chamado}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <label for="titulo">Titulo:</label>

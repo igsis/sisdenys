@@ -13,6 +13,8 @@ class Instituicao extends Model
         'instuicao'
     ];
 
+    public $timestamps = false;
+
     public function unidade()
     {
         return $this->belongsTo(Unidade::class);

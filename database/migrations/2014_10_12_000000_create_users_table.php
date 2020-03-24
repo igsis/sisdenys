@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('nome',70);
             $table->string('email',60);
             $table->string('telefone',15);
+            $table->timestamp();
             $table->softDeletes();
         });
     }
