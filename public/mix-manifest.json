@@ -2,5 +2,19 @@
     "/css/fontawesome.css": "/css/fontawesome.css",
     "/css/AdminLTE.css": "/css/AdminLTE.css",
     "/css/bootstrap.css": "/css/bootstrap.css",
-    "/css/tempusdominus-bootstrap-4.css": "/css/tempusdominus-bootstrap-4.css"
+    "/css/tempusdominus-bootstrap-4.css": "/css/tempusdominus-bootstrap-4.css",
+    "/css/icheck-bootstrap.css": "/css/icheck-bootstrap.css",
+    "/css/daterangepicker.css": "/css/daterangepicker.css",
+    "/css/dataTables.bootstrap4.css": "/css/dataTables.bootstrap4.css",
+    "/css/sweetalert2.css": "/css/sweetalert2.css",
+    "/js/jquery.js": "/js/jquery.js",
+    "/js/jquery-ui.js": "/js/jquery-ui.js",
+    "/js/bootstrap.bundle.js": "/js/bootstrap.bundle.js",
+    "/js/daterangepicker.js": "/js/daterangepicker.js",
+    "/js/tempusdominus-bootstrap-4.js": "/js/tempusdominus-bootstrap-4.js",
+    "/js/adminlte.js": "/js/adminlte.js",
+    "/js/demo.js": "/js/demo.js",
+    "/js/jquery.dataTables.js": "/js/jquery.dataTables.js",
+    "/js/dataTables.bootstrap4.js": "/js/dataTables.bootstrap4.js",
+    "/js/sweetalert2.js": "/js/sweetalert2.js"
 }
