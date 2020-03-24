@@ -43,16 +43,23 @@ class UnidadeController extends Controller
             'unidade' => 'required|unique:unidades'
         ]);
 
-        Unidade::create([
-            'unidade' => $request->unidade,
-            'cep' => $request->cep,
-            'endereco' => $request->endereco,
-            'numero' => $request->numero,
-            'bairro' => $request->bairro,
-            'instituicoes_id' => $request->instituicao
-        ]);
+        $unidade = new Unidade();
+        $unidade->unidade = $request->unidade;
+        $unidade->cep = $request->cep;
+        $unidade->endereco = $request->endereco;
+        $unidade->numero = $request->numero;
+        $unidade->bairro = $request->bairro;
+        $unidade->instituicoes_id = $request->instituicao;
 
-        return redirect()->route('unidades');
+
+        if ($unidade->save()){
+            return redirect()->route('unidades')->with('save','Cadastrado com sucesso');
+        }
+
+        return redirect()->route('unidades')->with('error','Erro ao tentar cadastrar');
+
+
+
     }
 
     /**
@@ -84,9 +91,21 @@ class UnidadeController extends Controller
      * @param  \App\Model\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unidade $unidade)
+    public function update(Request $request)
     {
-        //
+        $unidade =  Unidade::find($request->id);
+        $unidade->unidade = $request->unidade;
+        $unidade->cep = $request->cep;
+        $unidade->endereco = $request->endereco;
+        $unidade->numero = $request->numero;
+        $unidade->bairro = $request->bairro;
+        $unidade->instituicoes_id = $request->instituicao;
+
+        if ($unidade->save()){
+            return redirect('/unidades')->with('save','Editado com sucesso');
+        }
+
+        return redirect('/unidades')->with('error','Falha ao fazer alteração');
     }
 
     /**
@@ -95,8 +114,11 @@ class UnidadeController extends Controller
      * @param  \App\Model\Unidade  $unidade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unidade $unidade)
+    public function destroy(Request $request)
     {
-        //
+        if (Unidade::find($request->id)->delete()){
+            return redirect('/unidades')->with('save','Unidade deletada com sucesso');
+        }
+        return redirect('/unidades')->with('error','Erro ao tentar apagar');
     }
 }
