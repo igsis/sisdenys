@@ -81,7 +81,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div id="modal-editar"  class="modal-body">
+                <div class="modal-body">
                     <form action="{{ route('unidade.cadastrar') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
@@ -147,20 +147,23 @@
         <!-- /.modal-dialog -->
     </div>
 
+
     {{--Modal de Edição--}}
     <div class="editarUnidade modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar Unidade</h4>
-                    <button type="reset" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('unidade.editar')}}" method="post">
-                    <div id='modal-editar' class="modal-body">
+                <div id="modal-editar" class="modal-body">
+                    <form action="{{ route('unidade.editar') }}" method="post">
                         @csrf
                         @method('put')
+
+                        <input type="hidden" id="id" name="id">
                         <div class="row">
                             <div class="col-12">
                                 <label for="nomeUnidade">Nome da Unidade:</label>
@@ -179,7 +182,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <label for="rua">Rua:</label>
-                                <input type="text" class="form-control" name="endereco" id="ruaEditar required readonly>
+                                <input type="text" class="form-control" name="endereco" id="enderecoEditar" required readonly>
                             </div>
                             <div class="col-3">
                                 <label for="numero">Número:</label>
@@ -187,7 +190,7 @@
                             </div>
                             <div class="col-3">
                                 <label for="complemento">Complemento:</label>
-                                <input type="text" class="form-control" name="complemento" id="complementoEditar">
+                                <input type="text" class="form-control" name="complemento" id="complemento">
                             </div>
                         </div>
                         <div class="row">
@@ -211,13 +214,13 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Gravar</button>
+                        </div>
+                    </form>
+                </div>
 
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Editar</button>
-                    </div>
-                </form>
             </div>
             <!-- /.modal-content -->
         </div>
@@ -271,6 +274,7 @@
 
         //API CEP
         @includeIf('includes.cep-api')
+        @includeIf('includes.cep-api-edicao')
 
 
         $(function () {
@@ -288,28 +292,21 @@
             $.getJSON('/api/EditarUnidade/' + id, function (dados) {
                 let unidade = document.querySelector('#unidadeEditar');
                 let cep = document.querySelector('#cepEditar');
-                let rua = document.querySelector('#ruaEditar');
-                let cidade = document.querySelector('#cidadeEditar')
+                let endereco = document.querySelector('#enderecoEditar');
+                let numero = document.querySelector('#numeroEditar');
+                let cidade = document.querySelector('#cidadeEditar');
+                let bairro = document.querySelector('#bairroEditar');
+                let idUnidade = document.querySelector('#id');
+
+                unidade.value = dados.unidade;
+                cep.value = dados.cep;
+                endereco.value = dados.endereco;
+                cidade.value = dados.cidade;
+                bairro.value = dados.bairro;
+                numero.value = dados.numero;
+                idUnidade.value = id;
+
             });
-
-            ;
-            let bairro = document.querySelector('#bairroEditar');
-           // let instituicao = document.querySelector('#instituicaoEditar');
-
-            // unidade.value = dados[1];
-            // cep.value = dados[2];
-            // rua.value = dados[3];
-            // cidade.value = dados[4];
-            // bairro.value = dados[5];
-            //instituicao.value = dados[6];
-            //
-            // //
-            // let id = document.createElement('input');
-            // id.value = dados[0];
-            // id.type = 'hidden';
-            // id.name = 'id';
-
-            //document.querySelector('#modal-editar').appendChild(id);
 
             $('.editarUnidade').modal('show');
         }
