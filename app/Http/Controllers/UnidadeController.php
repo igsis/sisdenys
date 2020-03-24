@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Instituicao;
 use App\Model\Unidade;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class UnidadeController extends Controller
     {
 
         $unidades = Unidade::all();
-        return view('unidades',['unidades' => $unidades]);
+        $instituicoes = Instituicao::all();
+        return view('unidades', compact('unidades', 'instituicoes'));
     }
 
     /**
@@ -37,7 +39,20 @@ class UnidadeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'unidade' => 'required|unique:unidades'
+        ]);
+
+        Unidade::create([
+            'unidade' => $request->unidade,
+            'cep' => $request->cep,
+            'endereco' => $request->endereco,
+            'numero' => $request->numero,
+            'bairro' => $request->bairro,
+            'instituicoes_id' => $request->instituicao
+        ]);
+
+        return redirect()->route('unidades');
     }
 
     /**

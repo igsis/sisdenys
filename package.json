@@ -20,10 +20,9 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.12.1",
+        "@fortawesome/fontawesome-free": "^5.13.0",
         "admin-lte": "^3.0.2",
         "bootstrap": "^4.4.1",
-        "font-awesome": "^5.12.0",
         "sweetalert2": "^9.10.2"
     }
 }

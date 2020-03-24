@@ -10,12 +10,15 @@ class Unidade extends Model
 
     protected $table = 'unidades';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'unidade',
         'cep',
         'endereco',
         'numero',
         'bairro',
+        'instituicoes_id'
     ];
 
     public function usuario()

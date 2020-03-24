@@ -23,6 +23,7 @@ Route::get('/chamados','ChamadoController@index')->name('chamados');
 
 //unidades
 Route::get('/unidades','UnidadeController@index')->name('unidades');
+Route::post('/cadastrarUnidade', 'UnidadeController@store')->name('unidade.cadastrar');
 
 //tipo de chamados
 Route::get('/tipoChamados','TipoChamadoController@index')->name('tipoChamado');

@@ -41,13 +41,18 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>CCSP</td>
-                                            <td>
-                                                <button class="btn btn-primary" onclick="editarUnidade()">Editar</button>
-                                                <button class="btn btn-danger" onclick="modalApagarUnidade()">Apagar</button>
-                                            </td>
-                                        </tr>
+                                        @forelse($unidades as $unidade)
+                                            <tr>
+                                                <td>{{ $unidade->unidade }}</td>
+                                                <td>
+                                                    <button class="btn btn-primary" onclick="editarUnidade({{ $unidade->id }})">Editar</button>
+                                                    <button class="btn btn-danger" onclick="modalApagarUnidade()">Apagar</button>
+                                                </td>
+                                            </tr>
+                                        @empty
+
+                                        @endforelse
+
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -72,12 +77,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Cadastro Unidade</h4>
+                    @endif
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="{{ route('unidade.cadastrar') }}" method="post">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-12">
                                 <label for="nomeUnidade">Nome da Unidade:</label>
@@ -100,7 +107,7 @@
                             </div>
                             <div class="col-3">
                                 <label for="numero">Número:</label>
-                                <input type="text" class="form-control" name="numero" id="numero" required>
+                                <input type="text" class="form-control" name="numero" id="numero" value="{{ isset($uni) ? $uni : ""  }}" required>
                             </div>
                             <div class="col-3">
                                 <label for="complemento">Complemento:</label>
@@ -120,16 +127,21 @@
                         <div class="row">
                             <div class="col">
                                 <label for="instituicao">Instituição</label>
-                                <select type="text" class="form-control" id="instituicao" name="insituicao">
+                                <select type="text" class="form-control" id="instituicao" name="instituicao" required>
+                                    <option value="">Selecione uma opção</option>
+                                    @foreach($instituicoes as $instituicao)
+                                        <option value="{{ $instituicao->id }}">{{ $instituicao->instituicao }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Gravar</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Gravar</button>
-                </div>
+
             </div>
             <!-- /.modal-content -->
         </div>
@@ -149,10 +161,12 @@
                 <div class="modal-body">
                     <p>Você realmente deseja pagar essa unidade?</p>
                 </div>
+
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-light" data-dismiss="modal">Não</button>
                     <button type="button" class="btn btn-outline-light">Sim</button>
                 </div>
+
             </div>
             <!-- /.modal-content -->
         </div>
@@ -189,8 +203,12 @@
             $('.unidades').modal('show');
         }
 
-        function editarUnidade() {
-            $('.unidades').modal('show');
+        function editarUnidade(id) {
+
+            $.getJSON('/api/editarUnidade/' + id, function (uni){
+                alert(uni);
+                $('.unidades').modal('show');
+            });
         }
 
         function modalApagarUnidade() {
