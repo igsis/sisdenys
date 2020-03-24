@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
+use App\Model\Unidade;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/EditarUnidade/{id}', function($id){
+    $dados = Unidade::findOrFail($id);
+    return Response::json($dados);
+})->name('api.editarUnidade');
