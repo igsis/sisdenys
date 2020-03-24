@@ -1,6 +1,6 @@
 @extends('template.index')
 
-@section('titulo','tipo-chamado')
+@section('titulo','Tipo Chamado')
 
 @section('conteudo')
     <!-- Content Header (Page header) -->
@@ -45,20 +45,18 @@
                                             <tr>
                                                 <td>{{ $tipo->tipo_chamado }}</td>
                                                 <td>
-                                                    <button class="btn btn-primary" onclick="editarTipoChamado({{$tipo->id}})">Editar</button>
-                                                    <button class="btn btn-danger" onclick="modalApagarTipoChamado({{$tipo->id}})">Apagar</button>
+                                                    <button class="btn btn-primary"
+                                                            onclick="editarTipoChamado([{{$tipo->id}},'{{$tipo->tipo_chamado}}'])">
+                                                        Editar
+                                                    </button>
+                                                    <button class="btn btn-danger"
+                                                            onclick="modalApagarTipoChamado({{$tipo->id}})">Apagar
+                                                    </button>
                                                 </td>
                                             </tr>
                                         @empty
 
                                         @endforelse
-                                        <tr>
-                                            <td>CCSP</td>
-                                            <td>
-                                                <button class="btn btn-primary" onclick="editarTipoChamado()">Editar</button>
-                                                <button class="btn btn-danger" onclick="modalApagarTipoChamado()">Apagar</button>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -87,22 +85,57 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form method="post">
+                <form action="{{route('tipoChamado.cadastrar')}}" method="post">
+                    <div class="modal-body">
                         @csrf
-                        @method('PUT')
                         <div class="row">
                             <div class="col-12">
                                 <label for="tipoChamado">Tipo de chamado:</label>
-                                <input type="text" class="form-control" id="tipoChamado" name="tipoChamado" placeholder="Digite o tipo de chamado" required>
+                                <input type="text" class="form-control" id="tipoChamado" name="tipoChamado"
+                                       placeholder="Digite o tipo de chamado" required maxlength="20">
                             </div>
                         </div>
-                    </form>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Gravar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+
+    <div class="tipo-chamado-edita modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Tipo de chamado</h4>
+                    <button type="reset" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Gravar</button>
-                </div>
+                <form action="{{route('tipoChamado.editar')}}" method="post">
+                    <div id='modal-editar' class="modal-body">
+                        @csrf
+                        @method('put')
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="tipoChamado">Tipo de chamado:</label>
+                                <input type="text" class="form-control" id="tipoChamadoEditar" name="tipoChamado"
+                                       placeholder="Digite o tipo de chamado" required maxlength="20">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Editar</button>
+                    </div>
+                </form>
             </div>
             <!-- /.modal-content -->
         </div>
@@ -119,13 +152,18 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <p>Você realmente deseja pagar essa Tipo de Chamado?</p>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-outline-light" data-dismiss="modal">Não</button>
-                    <button type="button" class="btn btn-outline-light">Sim</button>
-                </div>
+                <form action="{{route('tipoChamado.apagar')}}" method="post">
+                    <div class="modal-body">
+                        <p>Você realmente deseja pagar essa Tipo de Chamado?</p>
+                        @csrf
+                        @method('DELETE')
+                        <input type="hidden" id="idApagar" name="id">
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="reset" class="btn btn-outline-light" data-dismiss="modal">Não</button>
+                        <button type="submit" class="btn btn-outline-light">Sim</button>
+                    </div>
+                </form>
             </div>
             <!-- /.modal-content -->
         </div>
@@ -138,7 +176,7 @@
     {{--  Folha de estilo adiocional para tabela  --}}
     <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap4.css')}}">
     <style>
-        form .row{
+        form .row {
             margin-top: 15px;
         }
     </style>
@@ -158,24 +196,43 @@
             $('.tipo-chamado').modal('show');
         }
 
-        function editarTipoChamado() {
-            $('.tipo-chamado').modal('show');
+        function editarTipoChamado(dados) {
+            let tipoChamado = document.querySelector('#tipoChamadoEditar');
+            tipoChamado.value = dados[1];
+
+
+            let id = document.createElement('input');
+            id.value = dados[0];
+            id.type = 'hidden';
+            id.name = 'id';
+
+            document.querySelector('#modal-editar').appendChild(id);
+
+            $('.tipo-chamado-edita').modal('show');
         }
 
-        function modalApagarTipoChamado() {
+        function modalApagarTipoChamado(id) {
+            document.querySelector('#idApagar').value = id;
             $('.modal-danger').modal('show');
         }
 
         @if(session('save'))
-            Swal.fire({
-                title: 'Salvo com sucesso.',
-                icon: 'success',
-                width: 430,
-                padding: '15px',
-                background: '#fff url(/images/trees.png)',
-                backdrop: `rgba(0,0,123,0.4)
+        Swal.fire({
+            title: '{{session('save')}}.',
+            icon: 'success',
+            width: 600,
+            padding: '15px',
+            background: '#fff url(/images/trees.png)',
+            backdrop: `rgba(0,0,123,0.4)
                             url("https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif")`
-            })
+        })
+        @endif
+        @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{session('error')}}'
+        })
         @endif
     </script>
 @endsection

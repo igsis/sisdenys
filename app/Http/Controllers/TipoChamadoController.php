@@ -36,7 +36,13 @@ class TipoChamadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipo =  new TipoChamado();
+        $tipo->tipo_chamado =  $request->tipoChamado;
+        if ($tipo->save()){
+            return redirect()->route('tipoChamado')->with('save','Cadastrado com sucesso');
+        }
+
+        return redirect()->route('tipoChamado')->with('error','Erro ao tentar cadastrar');
     }
 
     /**
@@ -68,16 +74,16 @@ class TipoChamadoController extends Controller
      * @param  \App\Model\TipoChamado  $tipoChamado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $tipo =  TipoChamado::find($id);
-        $tipo->tipo_chamado = $request->tipo;
+        $tipo =  TipoChamado::find($request->id);
+        $tipo->tipo_chamado = $request->tipoChamado;
 
         if ($tipo->save()){
-            return redirect('/tipoChamados')->with('save',true);
+            return redirect('/tipoChamados')->with('save','Editado com sucesso');
         }
 
-        return redirect('/tipoChamados')->with('save',false);
+        return redirect('/tipoChamados')->with('error','Falha ao fazer alteração');
     }
 
     /**
@@ -86,8 +92,11 @@ class TipoChamadoController extends Controller
      * @param  \App\Model\TipoChamado  $tipoChamado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoChamado $tipoChamado)
+    public function destroy(Request $request)
     {
-        //
+        if (TipoChamado::find($request->id)->delete()){
+            return redirect('/tipoChamados')->with('save','Tipo de chamado deletado com sucesso');
+        }
+        return redirect('/tipoChamados')->with('error','Erro ao tentar apagar');
     }
 }
