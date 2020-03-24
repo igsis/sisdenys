@@ -27,3 +27,6 @@ Route::post('/cadastrarUnidade', 'UnidadeController@store')->name('unidade.cadas
 
 //tipo de chamados
 Route::get('/tipoChamados','TipoChamadoController@index')->name('tipoChamado');
+Route::post('/tipoChamados/cadastrar','TipoChamadoController@store')->name('tipoChamado.cadastrar');
+Route::put('/tipoChamados/editar','TipoChamadoController@update')->name('tipoChamado.editar');
+Route::delete('/tipoChamados/apagar','TipoChamadoController@destroy')->name('tipoChamado.apagar');

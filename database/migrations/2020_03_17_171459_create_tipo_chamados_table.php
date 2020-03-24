@@ -15,7 +15,7 @@ class CreateTipoChamadosTable extends Migration
     {
         Schema::create('tipo_chamados', function (Blueprint $table) {
             $table->tinyIncrements('id');
-            $table->string('tipo_chamado',10);
+            $table->string('tipo_chamado',25);
         });
     }
 
