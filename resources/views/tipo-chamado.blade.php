@@ -27,7 +27,7 @@
                                 <div class="col-md-2">
                                     <button class="btn btn-success btn-block" onclick="adicionarTipoChamado()">
                                         <i class="fas fa-plus"></i>
-                                        Novo Tipo de Chamado
+                                        Adicionar
                                     </button>
                                 </div>
                             </div>
@@ -41,6 +41,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        @forelse($tipos as $tipo)
+                                            <tr>
+                                                <td>{{ $tipo->tipo_chamado }}</td>
+                                                <td>
+                                                    <button class="btn btn-primary" onclick="editarTipoChamado({{$tipo->id}})">Editar</button>
+                                                    <button class="btn btn-danger" onclick="modalApagarTipoChamado({{$tipo->id}})">Apagar</button>
+                                                </td>
+                                            </tr>
+                                        @empty
+
+                                        @endforelse
                                         <tr>
                                             <td>CCSP</td>
                                             <td>
@@ -77,7 +88,9 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form method="post">
+                        @csrf
+                        @method('PUT')
                         <div class="row">
                             <div class="col-12">
                                 <label for="tipoChamado">Tipo de chamado:</label>
@@ -152,5 +165,17 @@
         function modalApagarTipoChamado() {
             $('.modal-danger').modal('show');
         }
+
+        @if(session('save'))
+            Swal.fire({
+                title: 'Salvo com sucesso.',
+                icon: 'success',
+                width: 430,
+                padding: '15px',
+                background: '#fff url(/images/trees.png)',
+                backdrop: `rgba(0,0,123,0.4)
+                            url("https://media.giphy.com/media/7lsw8RenVcjCM/giphy.gif")`
+            })
+        @endif
     </script>
 @endsection

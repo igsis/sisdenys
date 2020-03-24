@@ -8,6 +8,8 @@ class TipoChamado extends Model
 {
     protected $table = 'tipo_chamados';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'tipo_chamado'
     ];
@@ -15,5 +17,5 @@ class TipoChamado extends Model
     public function chamado()
     {
         return $this->belongsTo(Chamado::class);
-    }   
+    }
 }

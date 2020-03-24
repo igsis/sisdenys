@@ -14,7 +14,8 @@ class TipoChamadoController extends Controller
      */
     public function index()
     {
-        return view('tipo-chamado');
+        $tipo = TipoChamado::all();
+        return view('tipo-chamado',['tipos' => $tipo]);
     }
 
     /**
@@ -67,9 +68,16 @@ class TipoChamadoController extends Controller
      * @param  \App\Model\TipoChamado  $tipoChamado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoChamado $tipoChamado)
+    public function update(Request $request, $id)
     {
-        //
+        $tipo =  TipoChamado::find($id);
+        $tipo->tipo_chamado = $request->tipo;
+
+        if ($tipo->save()){
+            return redirect('/tipoChamados')->with('save',true);
+        }
+
+        return redirect('/tipoChamados')->with('save',false);
     }
 
     /**
