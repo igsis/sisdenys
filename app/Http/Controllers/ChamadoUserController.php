@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Chamado;
 use Illuminate\Http\Request;
 
-class ChamadoController extends Controller
+class ChamadoUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +14,7 @@ class ChamadoController extends Controller
      */
     public function index()
     {
+        $chamados = Chamado::where('')->get();
         return view('chamados-usuario');
     }
 

@@ -19,7 +19,8 @@ Route::get('/', function () {
 
 
 //chamados usuario
-Route::get('/chamados','ChamadoController@index')->name('chamados');
+Route::get('/chamados','ChamadoUserController@index')->name('chamados');
+Route::post('/chamados','ChamadoUserController@store')->name('chamados.cadastro');
 
 //unidades
 Route::get('/unidades','UnidadeController@index')->name('unidades');
