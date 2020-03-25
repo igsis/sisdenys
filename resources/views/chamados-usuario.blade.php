@@ -38,18 +38,34 @@
                                         <tr>
                                             <th>Protocolo</th>
                                             <th>Titulo</th>
+                                            <th>Tipo Chamado</th>
                                             <th>Data de envio</th>
+                                            <th>Status</th>
                                             <th>Ação</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-
+                                            @forelse($chamados as $chamado)
+                                                <tr>
+                                                    <td>{{$chamado->protocolo}}</td>
+                                                    <td>{{$chamado->titulo}}</td>
+                                                    <td>{{$chamado->tipoChamado->tipo_chamado}}</td>
+                                                    <td>{{date_format($chamado->created_at,'d/m/Y')}}</td>
+                                                    <td>{{$chamado->status->status}}</td>
+                                                    <td>
+                                                        <button class="btn btn-danger" onclick="modalCancelar({{$chamado->id}})" @if($chamado->status_id != 1) disabled @endif>Cancelar</button>
+                                                    </td>
+                                                </tr>
+                                            @empty
+                                            @endforelse
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>Protocolo</th>
                                             <th>Titulo</th>
+                                            <th>Tipo Chamado</th>
                                             <th>Data de envio</th>
+                                            <th>Status</th>
                                             <th>Ação</th>
                                         </tr>
                                         </tfoot>
@@ -123,40 +139,6 @@
         <!-- /.modal-dialog -->
     </div>
 
-
-    <div class="tipo-chamado-edita modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Editar Tipo de chamado</h4>
-                    <button type="reset" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{route('tipoChamado.editar')}}" method="post">
-                    <div id='modal-editar' class="modal-body">
-                        @csrf
-                        @method('put')
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="tipoChamado">Tipo de chamado:</label>
-                                <input type="text" class="form-control" id="tipoChamadoEditar" name="tipoChamado"
-                                       placeholder="Digite o tipo de chamado" required maxlength="20">
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Editar</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
     <!-- Modal para pagar Tipo de Chamado -->
     <div class="modal fade modal-danger" id="modal-danger">
         <div class="modal-dialog">
@@ -167,12 +149,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('tipoChamado.apagar')}}" method="post">
+                <form action="{{route('chamados.apagar')}}" method="post">
                     <div class="modal-body">
-                        <p>Você realmente deseja pagar essa Tipo de Chamado?</p>
+                        <p>Você realmente deseja cancelar esse Chamado?</p>
                         @csrf
                         @method('DELETE')
-                        <input type="hidden" id="idApagar" name="id">
+                        <input type="hidden" id="idChamado" name="id">
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="reset" class="btn btn-outline-light" data-dismiss="modal">Não</button>
@@ -211,23 +193,8 @@
             $('.chamado').modal('show');
         }
 
-        function editarTipoChamado(dados) {
-            let tipoChamado = document.querySelector('#tipoChamadoEditar');
-            tipoChamado.value = dados[1];
-
-
-            let id = document.createElement('input');
-            id.value = dados[0];
-            id.type = 'hidden';
-            id.name = 'id';
-
-            document.querySelector('#modal-editar').appendChild(id);
-
-            $('.tipo-chamado-edita').modal('show');
-        }
-
-        function modalApagarTipoChamado(id) {
-            document.querySelector('#idApagar').value = id;
+        function modalCancelar(id) {
+            document.querySelector('#idChamado').value = id;
             $('.modal-danger').modal('show');
         }
 
