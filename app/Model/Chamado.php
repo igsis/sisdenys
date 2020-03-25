@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Chamado extends Model
 {
-    protected $table = 'chamados';
     use SoftDeletes;
+
+    protected $table = 'chamados';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'protocolo',
