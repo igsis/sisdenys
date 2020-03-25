@@ -15,7 +15,7 @@ class ChamadoUserController extends Controller
      */
     public function index()
     {
-        $chamados = Chamado::where('status_id','!=',3)->get();
+        $chamados = Chamado::all();
         $tipoChamado = TipoChamado::all();
         return view('chamados-usuario', compact('chamados','tipoChamado'));
     }
