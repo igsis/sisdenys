@@ -17,6 +17,6 @@ class Instituicao extends Model
 
     public function unidade()
     {
-        return $this->belongsTo(Unidade::class);
+        return $this->hasMany(Unidade::class,'instituicao_id','id');
     }
 }

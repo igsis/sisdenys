@@ -9,8 +9,8 @@ class TipoAcesso extends Model
 {
     protected $table = 'tipo_acessos';
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class,'tipo_acesso_id','id');
     }
 }
