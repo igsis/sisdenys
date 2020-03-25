@@ -206,7 +206,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="instituicao">Instituição</label>
-                                <select type="text" class="form-control" id="instituicao" name="instituicao" required>
+                                <select type="text" class="form-control" id="instituicaoEditar" name="instituicao" required>
                                     <option value="">Selecione uma opção</option>
                                     @foreach($instituicoes as $instituicao)
                                         <option value="{{ $instituicao->id }}">{{ $instituicao->instituicao }}</option>
@@ -304,6 +304,7 @@
                 cidade.value = dados.cidade;
                 bairro.value = dados.bairro;
                 numero.value = dados.numero;
+                document.getElementById('instituicaoEditar').value = dados.instituicoes_id;
                 idUnidade.value = id;
 
             });

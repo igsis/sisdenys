@@ -17,6 +17,6 @@ class Instituicao extends Model
 
     public function unidade()
     {
-        return $this->hasMany(Unidade::class,'instituicao_id','id');
+        return $this->hasMany(Unidade::class,'instituicoes_id','id');
     }
 }
