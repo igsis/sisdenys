@@ -73,10 +73,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('chamados')}}" class="nav-link">
+                    <a href="{{route('usuarios')}}" class="nav-link">
                         <i class="fas fa-users"></i>
                         <p>
-                            Gerenciar de Usuários
+                            Gerenciar Usuários
                         </p>
                     </a>
                 </li>
