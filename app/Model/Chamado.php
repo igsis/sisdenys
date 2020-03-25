@@ -20,29 +20,29 @@ class Chamado extends Model
         'telefone',
     ];
 
-    public function tipoChamado()
+    public function tipochamado()
     {
-        return $this->belongsTo(TipoChamado::class);
+        return $this->belongsTo(TipoChamado::class,'tipo_chamado_id','id');
     }
 
     public function status()
     {
-        return $this->belongsTo(Status::class);
+        return $this->belongsTo(Status::class,'status_id','id');
     }
 
-    public function usuario()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 
-    public function atendente()
+    public function atendentes()
     {
-        return $this->belongsTo(Atendentes::class);
+        return $this->hasMany(Atendentes::class,'chamado_id','id');
     }
 
     public function nota()
     {
-        return $this->belongsTo(Nota::class);
+        return $this->hasMany(Nota::class,'chamado_id','id');
     }
 
 }

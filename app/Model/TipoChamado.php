@@ -16,6 +16,6 @@ class TipoChamado extends Model
 
     public function chamado()
     {
-        return $this->hasMany(Chamado::class);
+        return $this->hasMany(Chamado::class,'tipo_chamado_id','id');
     }
 }

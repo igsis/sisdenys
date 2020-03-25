@@ -21,13 +21,13 @@ class Unidade extends Model
         'instituicoes_id'
     ];
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class,'unidade_id','id');
     }
 
     public function instituicao()
     {
-        return $this->hasMany(Unidade::class);
+        return $this->belongsTo(Unidade::class,'instituicao_id','id');
     }
 }

@@ -16,6 +16,6 @@ class Status extends Model
 
     public function chamado()
     {
-        return $this->hasMany(Chamado::class);
+        return $this->hasMany(Chamado::class,'status_id','id');
     }
 }
