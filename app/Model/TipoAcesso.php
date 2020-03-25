@@ -9,6 +9,11 @@ class TipoAcesso extends Model
 {
     protected $table = 'tipo_acessos';
 
+    protected $fillable = [
+        'id',
+        'tipo_acesso'
+    ];
+
     public function usuario()
     {
         return $this->belongsTo(User::class);
