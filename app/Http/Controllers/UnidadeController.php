@@ -93,7 +93,7 @@ class UnidadeController extends Controller
      */
     public function update(Request $request)
     {
-        $unidade =  Unidade::find($request->id);
+        $unidade =  Unidade::findOrFail($request->id);
         $unidade->unidade = $request->unidade;
         $unidade->cep = $request->cep;
         $unidade->endereco = $request->endereco;
@@ -102,10 +102,10 @@ class UnidadeController extends Controller
         $unidade->instituicoes_id = $request->instituicao;
 
         if ($unidade->save()){
-            return redirect('/unidades')->with('save','Editado com sucesso');
+            return redirect()->route('unidades')    ->with('save','Editado com sucesso');
         }
 
-        return redirect('/unidades')->with('error','Falha ao fazer alteração');
+        return redirect()->route('unidades')->with('error','Falha ao fazer alteração');
     }
 
     /**
