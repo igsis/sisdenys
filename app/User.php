@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function chamados()
     {
-        return $this->belongsTo(Chamado::class);
+        return $this->hasMany(Chamado::class,'user_id','id');
     }
 
     public function atendente()
