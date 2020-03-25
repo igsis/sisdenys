@@ -4,10 +4,12 @@ namespace App\Model;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Chamado extends Model
 {
     protected $table = 'chamados';
+    use SoftDeletes;
 
     protected $fillable = [
         'protocolo',
@@ -18,12 +20,12 @@ class Chamado extends Model
 
     public function tipoChamado()
     {
-        return $this->hasMany(TipoChamado::class);
+        return $this->belongsTo(TipoChamado::class);
     }
 
     public function status()
     {
-        return $this->hasMany(Status::class);
+        return $this->belongsTo(Status::class);
     }
 
     public function usuario()
