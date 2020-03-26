@@ -23,11 +23,61 @@
 
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-
+                            <div class="row align-items-center">
+                                <div class="col-4">
+                                    <b>Protocolo: </b> {{ $chamado->protocolo }}
+                                </div>
+                                <div class="col-4">
+                                    <form action="" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row form-group">
+                                            <label for="status" class="col-sm-4 col-form-label">Status: </label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control">
+                                                    @foreach ($status as $st)
+                                                        <option value="{{ $st->id }}"
+                                                                @if($st->id == $chamado->status_id) checked @endif>
+                                                            {{ $st->status }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button type="submit" class="btn btn-success">Atualizar</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
+                            <div class="row">
+                                <b>Dados do solicitante</b>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <b>Nome: </b> &nbsp;&nbsp; {{ $chamado->user->nome }}
+                                </div>
+                                <div class="col-4">
+                                    <b>E-mail: </b> &nbsp;&nbsp; {{ $chamado->user->email }}
+                                </div>
+                                <div class="col-4">
+                                    <b>Telefone: </b> &nbsp;&nbsp;{{ $chamado->telefone }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <b>Título: </b> &nbsp;&nbsp;{{ $chamado->titulo }}
+                                </div>
+                                <div class="col-4">
+                                    <b>Tipo de chamado: </b> &nbsp;&nbsp; {{ $chamado->tipochamado->tipo_chamado }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>Descrição: </b> {{ $chamado->descricao }}
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.card-body -->
                     </div>

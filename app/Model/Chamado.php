@@ -2,7 +2,8 @@
 
 namespace App\Model;
 
-use App\User;
+use App\Model\User;
+use App\Model\TipoChamado;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

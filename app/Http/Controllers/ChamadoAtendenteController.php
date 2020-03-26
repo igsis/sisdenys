@@ -18,6 +18,7 @@ class ChamadoAtendenteController extends Controller
     public function show($id)
     {
         $chamado = Chamado::find($id);
-        return view('visualizar-chamado',compact('chamado'));
+        $status = Status::all();
+        return view('visualizar-chamado',compact('chamado','status'));
     }
 }
