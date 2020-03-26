@@ -26,6 +26,11 @@
                             <div class="row pb-3">
                                 <div class="col-12">
                                     <div class="row">
+                                        <div class="col-4 p-0 mb-3">
+                                            <b>Atendente: </b> {{ $chamado->atendentes->first() ? $chamado->atendentes->first()->nome : '' }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <h5>Dados do solicitante</h5>
                                     </div>
                                     <div class="row">
@@ -67,8 +72,7 @@
                                             <div class="col-sm-6">
                                                 <select class="form-control" name="status" id="status">
                                                     @foreach ($status as $st)
-                                                        <option value="{{ $st->id }}"
-                                                                @if($st->id == $chamado->status_id) checked @endif>
+                                                        <option value="{{ $st->id }}" {{ $st->id == $chamado->status_id ? 'selected' : '' }}>
                                                             {{ $st->status }}
                                                         </option>
                                                     @endforeach
