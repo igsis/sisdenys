@@ -28,6 +28,6 @@ class Unidade extends Model
 
     public function instituicao()
     {
-        return $this->belongsTo(Unidade::class,'instituicoes_id','id');
+        return $this->belongsTo(Instituicao::class,'instituicoes_id','id');
     }
 }
