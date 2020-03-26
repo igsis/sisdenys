@@ -26,6 +26,7 @@ Route::delete('/chamados/apagar','ChamadoUserController@destroy')->name('chamado
 //chamados Atendente
 Route::get('/atendente/chamados','ChamadoAtendenteController@index')->name('atendente.chamados');
 Route::get('/atendente/{id}/visualizar','ChamadoAtendenteController@show')->name('chamado.visualizar');
+Route::put('/status/atualizar/{id}','ChamadoAtendenteController@update')->name('atualizar.status');
 
 //unidades
 Route::get('/unidades','UnidadeController@index')->name('unidades');

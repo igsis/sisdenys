@@ -21,4 +21,13 @@ class ChamadoAtendenteController extends Controller
         $status = Status::all();
         return view('visualizar-chamado',compact('chamado','status'));
     }
+
+    public function update(Request $request, $id){
+
+        $chamado = Chamado::find($id);
+        $chamado->status_id = $request->status;
+        $chamado->save();
+
+        return redirect()->route('atendente.chamados')->with('save','Status do Chamado atualizado com sucesso');
+    }
 }

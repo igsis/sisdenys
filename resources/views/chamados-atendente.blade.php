@@ -46,7 +46,7 @@
                                         </thead>
                                         <tbody>
                                         @forelse($chamados as $chamado)
-                                            @if($chamado->user->unidade->instituicao->id == 2)
+                                            @if($chamado->user->unidade->instituicao->id == 1)
                                                 <tr>
                                                     <td>{{$chamado->protocolo}}</td>
                                                     <td>{{$chamado->titulo}}</td>
