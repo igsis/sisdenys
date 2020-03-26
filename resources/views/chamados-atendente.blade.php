@@ -40,6 +40,7 @@
                                             <th>Titulo</th>
                                             <th>Tipo Chamado</th>
                                             <th>Data de envio</th>
+                                            <th>Atendente</th>
                                             <th>Status</th>
                                             <th>Ação</th>
                                         </tr>
@@ -52,6 +53,11 @@
                                                     <td>{{$chamado->titulo}}</td>
                                                     <td>{{$chamado->tipochamado->tipo_chamado}}</td>
                                                     <td>{{date_format($chamado->created_at,'d/m/Y')}}</td>
+                                                    <td>
+                                                        @if($chamado->atendentes->first())
+                                                            {{ $chamado->atendentes->first()->nome }}
+                                                        @endif
+                                                    </td>
                                                     <td>{{$chamado->status->status}}</td>
                                                     <td>
                                                         <a class="btn btn-primary" href="{{route('chamado.visualizar',$chamado->id)}}">Visualizar</a>
@@ -67,6 +73,7 @@
                                             <th>Titulo</th>
                                             <th>Tipo Chamado</th>
                                             <th>Data de envio</th>
+                                            <th>Atendente</th>
                                             <th>Status</th>
                                             <th>Ação</th>
                                         </tr>
