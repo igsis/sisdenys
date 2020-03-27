@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
+Route::get('/login','AuthController@formLogin')->name('login');
+Route::post('/login/do','AuthController@autenticacao')->name('login.aut');
+
 
 //chamados usuario
 Route::get('/chamados','ChamadoUserController@index')->name('chamados');
