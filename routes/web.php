@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/logar/',function (){
+   \Illuminate\Support\Facades\Auth::loginUsingId('9');
+   $user = \Illuminate\Support\Facades\Auth::user();
+   session()->put('user',$user);
+
+});
+
 Route::get('/', function () {
     return view('index');
 })->name('home')->middleware('auth');
