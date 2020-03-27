@@ -16,6 +16,8 @@ class Unidade extends Model
         'unidade',
         'cep',
         'endereco',
+        'cidade',
+        'complemento',
         'numero',
         'bairro',
         'instituicoes_id'
