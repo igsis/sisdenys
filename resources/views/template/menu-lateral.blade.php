@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('chamados')}}" class="nav-link">
+                    <a href="{{route('logout')}}" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>
                         <p>
                             Sair

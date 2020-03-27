@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-})->name('home');
+})->name('home')->middleware('auth');
+
+Route::get('/logout','AuthController@logout')->name('logout');
 
 Route::get('/login','AuthController@formLogin')->name('login');
 Route::post('/login/do','AuthController@autenticacao')->name('login.aut');
+Route::get('/registro/{login}','AuthController@registro')->name('registrar');
+Route::post('/registro/do','AuthController@cadastrarUser')->name('registrar.do');
 
 
 //chamados usuario

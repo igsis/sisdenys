@@ -24,6 +24,8 @@ class User extends Authenticatable
         'tipo_acesso_id'
     ];
 
+    public $timestamps = false;
+
     public function tipoacesso(){
         return $this->belongsTo(TipoAcesso::class,'tipo_acesso_id','id');
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Unidade;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -10,7 +12,7 @@ class AuthController extends Controller
 {
     public function formLogin()
     {
-        return view('login');
+        return view('Auth.login');
     }
 
     public function autenticacao(Request $request)
@@ -33,9 +35,11 @@ class AuthController extends Controller
                 if (Auth::loginUsingId($user->id)){
                     if (Auth::check() === true){
                         return redirect('/');
+                    }else{
+
                     }
                 }else{
-                    echo 'não logou';
+                    return redirect()->route('registrar',['login'=>$request->usuario]);
                 }
             } else {
                 echo "Não entrou";
@@ -46,5 +50,40 @@ class AuthController extends Controller
         }
     }
 
+    public function registro($login = '')
+    {
+        $unidades = Unidade::all();
+        if ($login != ''){
+            return view('Auth.registro',compact('login','unidades'));
+        }
+    }
+
+    public function cadastrarUser(Request $request)
+    {
+        $user = new User();
+        $user->login =  $request->login;
+        $user->nome = $request->nome;
+        $user->email = $request->email;
+        $user->telefone = $request->telefone;
+        $user->tipo_acesso_id = 3;
+        $user->unidade_id = $request->unidade;
+
+        if ($user->save()){
+            $novo = User::where('login',$request->login)->first();
+            Auth::loginUsingId($user->id);
+
+            return redirect('/');
+        }
+
+        return redirect('/login')->with(['Errors','Ocorreu um erro ao fazer registro, tente novamente']);
+    }
+
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/login');
+    }
 
 }
