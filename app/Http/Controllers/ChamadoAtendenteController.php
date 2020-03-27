@@ -33,7 +33,7 @@ class ChamadoAtendenteController extends Controller
             $atendente = new Atendentes();
             $atendente->user_id = 7;
             $atendente->chamado_id = $id;
-            if($atendente->saveOrFail()){
+            if($atendente->save()){
                 return redirect()->route('atendente.chamados')->with('save','Status do Chamado atualizado com sucesso');
             }
         }
