@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Chamado;
 use App\Model\TipoChamado;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChamadoUserController extends Controller
 {
@@ -14,6 +15,8 @@ class ChamadoUserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,7 +24,8 @@ class ChamadoUserController extends Controller
 
     public function index()
     {
-        $chamados = Chamado::all();
+        $idUser = Auth::user()->id;
+        $chamados = Chamado::where('user_id',$idUser)->get();
         $tipoChamado = TipoChamado::all();
         return view('chamados-usuario', compact('chamados','tipoChamado'));
     }
@@ -34,8 +38,9 @@ class ChamadoUserController extends Controller
      */
     public function store(Request $request)
     {
+        $idUser = Auth::user()->id;
         $protocolo = date('YmdHms');
-        $user = 2;
+        $user = $idUser;
 
         $chamado =  new Chamado();
         $chamado->protocolo = $protocolo;

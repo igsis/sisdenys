@@ -38,7 +38,7 @@ class Chamado extends Model
 
     public function atendentes()
     {
-        return $this->belongsToMany(User::class,'atendentes','chamado_id','id');
+        return $this->belongsToMany(User::class,'atendentes','chamado_id','user_id');
     }
 
     public function nota()

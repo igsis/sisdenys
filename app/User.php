@@ -42,7 +42,7 @@ class User extends Authenticatable
 
     public function atendentes()
     {
-        return $this->belongsToMany(Chamado::class,'atendentes','user_id','id');
+        return $this->belongsToMany(Chamado::class,'atendentes','user_id','chamado_id');
     }
 
     public function nota(){
