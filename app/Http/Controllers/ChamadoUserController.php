@@ -29,7 +29,7 @@ class ChamadoUserController extends Controller
     public function store(Request $request)
     {
         $protocolo = date('YmdHms');
-        $user = 2;
+        $user = 1;
 
         $chamado =  new Chamado();
         $chamado->protocolo = $protocolo;
