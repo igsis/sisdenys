@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App;
 
 use App\Model\Atendentes;
 use App\Model\Chamado;
@@ -24,6 +24,8 @@ class User extends Authenticatable
         'tipo_acesso_id'
     ];
 
+    public $timestamps = false;
+
     public function tipoacesso(){
         return $this->belongsTo(TipoAcesso::class,'tipo_acesso_id','id');
     }
@@ -40,7 +42,7 @@ class User extends Authenticatable
 
     public function atendentes()
     {
-        return $this->belongsToMany(Chamado::class,'atendentes','user_id','id');
+        return $this->belongsToMany(Chamado::class,'atendentes','user_id','chamado_id');
     }
 
     public function nota(){
