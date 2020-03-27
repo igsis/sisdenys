@@ -14,6 +14,9 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+
+            @include('template.erros')
+
             <div class="row justify-content-center">
                 <div class="col-12">
                     <div class="card">
@@ -92,7 +95,7 @@
                             <div class="col-12">
                                 <label for="tipoChamado">Tipo de chamado:</label>
                                 <input type="text" class="form-control" id="tipoChamado" name="tipoChamado"
-                                       placeholder="Digite o tipo de chamado" required maxlength="20">
+                                       placeholder="Digite o tipo de chamado"  maxlength="20" required>
                             </div>
                         </div>
 
