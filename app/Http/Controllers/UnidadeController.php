@@ -52,6 +52,8 @@ class UnidadeController extends Controller
         $unidade->unidade = $request->unidade;
         $unidade->cep = $request->cep;
         $unidade->endereco = $request->endereco;
+        $unidade->cidade = $request->cidade;
+        $unidade->complemento = $request->complemento;
         $unidade->numero = $request->numero;
         $unidade->bairro = $request->bairro;
         $unidade->instituicoes_id = $request->instituicao;
@@ -99,9 +101,16 @@ class UnidadeController extends Controller
     public function update(Request $request)
     {
         $unidade =  Unidade::findOrFail($request->id);
+
+        $this->validate($request, [
+            'unidade' => 'required|unique:unidades,unidade,'.$unidade->id,
+        ]);
+
         $unidade->unidade = $request->unidade;
         $unidade->cep = $request->cep;
         $unidade->endereco = $request->endereco;
+        $unidade->cidade = $request->cidade;
+        $unidade->complemento = $request->complemento;
         $unidade->numero = $request->numero;
         $unidade->bairro = $request->bairro;
         $unidade->instituicoes_id = $request->instituicao;

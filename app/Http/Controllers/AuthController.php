@@ -22,7 +22,7 @@ class AuthController extends Controller
         $ldappass = $request->senha;  // associated password
 
         // connect to ldap server
-        $ldapconn = ldap_connect("10.10.68.44",389)
+        $ldapconn = ldap_connect("10.10.68.43",389)
         or die("Conexão perdida com servidor.");
 
         if ($ldapconn) {
@@ -42,11 +42,10 @@ class AuthController extends Controller
                     return redirect()->route('registrar',['login'=>$request->usuario]);
                 }
             } else {
-                echo "Não entrou";
-                echo  "<br>$ldapbind";
+                return redirect('/login')->with('error','Erro...'.$ldapbind);
             }
         }else{
-            //echo $ldapconn;
+            return redirect('/login')->with('error','Erro...'.$ldapconn);
         }
     }
 

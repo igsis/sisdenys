@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Log in</title>
+    <title>SisDENYS | Log in</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,7 +34,7 @@
             <form action="{{ route('login.aut') }}" method="post">
                 @csrf
                 <div class="input-group mb-3">
-                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Login (ex.: x879456)" value="teste">
+                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Login (ex.: x879456)" value="x365839">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" value="123456">
+                    <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" value="Samantha17">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

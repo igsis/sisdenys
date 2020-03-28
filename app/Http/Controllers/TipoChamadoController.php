@@ -40,6 +40,10 @@ class TipoChamadoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'tipoChamado' => 'required|unique:tipo_chamados,tipo_chamado'
+        ]);
+
         $tipo =  new TipoChamado();
         $tipo->tipo_chamado =  $request->tipoChamado;
         if ($tipo->save()){
@@ -81,6 +85,11 @@ class TipoChamadoController extends Controller
     public function update(Request $request)
     {
         $tipo =  TipoChamado::find($request->id);
+
+        $this->validate($request, [
+            'tipoChamado' => 'required|unique:tipo_chamados,tipo_chamado,'.$tipo->id,
+        ]);
+
         $tipo->tipo_chamado = $request->tipoChamado;
 
         if ($tipo->save()){
