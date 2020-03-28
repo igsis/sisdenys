@@ -18,6 +18,8 @@ class CreateUnidadesTable extends Migration
             $table->string('unidade',50);
             $table->char('cep',9);
             $table->string('endereco',70);
+            $table->string('cidade',70);
+            $table->string('complemento',70)->nullable();
             $table->string('numero',10);
             $table->string('bairro',60);
         });

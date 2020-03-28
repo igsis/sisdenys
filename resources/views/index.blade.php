@@ -19,7 +19,7 @@
 
             <div class="row justify-content-center">
                 <div class="col text-center">
-                    <h2>Hello world!</h2>
+                    <h2></h2>
                 </div>
             </div>
 

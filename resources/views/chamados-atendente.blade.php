@@ -47,7 +47,7 @@
                                         </thead>
                                         <tbody>
                                         @forelse($chamados as $chamado)
-                                            @if($chamado->user->unidade->instituicao->id == 1)
+                                            @if($chamado->user->unidade->instituicao->id == $instituicao)
                                                 <tr>
                                                     <td>{{$chamado->protocolo}}</td>
                                                     <td>{{$chamado->titulo}}</td>
@@ -55,7 +55,7 @@
                                                     <td>{{date_format($chamado->created_at,'d/m/Y')}}</td>
                                                     <td>
                                                         @if($chamado->atendentes->first())
-                                                            {{ $chamado->atendentes->first()->nome }}
+                                                            {{ $chamado->atendentes()->first()->nome }}
                                                         @endif
                                                     </td>
                                                     <td>{{$chamado->status->status}}</td>

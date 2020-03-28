@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -75,8 +79,12 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-
         $user =  User::findOrFail($request->id);
+
+        $this->validate($request, [
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
         $user->nome = $request->nome;
         $user->email = $request->email;
         $user->telefone = $request->telefone;

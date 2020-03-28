@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\Model\User;
+use App\User;
 use App\Model\TipoChamado;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,7 +38,7 @@ class Chamado extends Model
 
     public function atendentes()
     {
-        return $this->belongsToMany(User::class,'atendentes','chamado_id','id');
+        return $this->belongsToMany(User::class,'atendentes','chamado_id','user_id');
     }
 
     public function nota()

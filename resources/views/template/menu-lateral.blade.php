@@ -15,7 +15,7 @@
             <div class="image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Usuário</a>
+                <a href="#" class="d-block">{{ Auth::user()->nome }}</a>
             </div>
         </div>
 
@@ -31,6 +31,7 @@
                         </p>
                     </a>
                 </li>
+                @if(Auth::user()->tipo_acesso_id == 3)
                 <li class="nav-item">
                     <a href="{{route('chamados')}}" class="nav-link">
                         <i class="fas fa-phone-volume"></i>
@@ -39,6 +40,8 @@
                         </p>
                     </a>
                 </li>
+                @endif
+                @if(Auth::user()->tipo_acesso_id == 2 || Auth::user()->tipo_acesso_id == 1)
                 <li class="nav-item">
                     <a href="{{route('atendente.chamados')}}" class="nav-link">
                         <i class="fas fa-phone-volume"></i>
@@ -47,14 +50,16 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('chamados')}}" class="nav-link">
-                        <i class="fas fa-phone-volume"></i>
-                        <p>
-                            Chamados Admin
-                        </p>
-                    </a>
-                </li>
+                @endif
+{{--                <li class="nav-item">--}}
+{{--                    <a href="{{route('chamados')}}" class="nav-link">--}}
+{{--                        <i class="fas fa-phone-volume"></i>--}}
+{{--                        <p>--}}
+{{--                            Chamados Admin--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+                @if(Auth::user()->tipo_acesso_id == 1)
                 <li class="nav-header">Gerencial</li>
                 <li class="nav-item">
                     <a href="{{route('unidades')}}" class="nav-link">
@@ -80,6 +85,7 @@
                         </p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-header">Minha Conta</li>
                 <li class="nav-item">
                     <a href="{{route('chamados')}}" class="nav-link">
@@ -90,7 +96,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('chamados')}}" class="nav-link">
+                    <a href="{{route('logout')}}" class="nav-link">
                         <i class="fas fa-sign-out-alt"></i>
                         <p>
                             Sair

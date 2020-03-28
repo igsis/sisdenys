@@ -190,7 +190,7 @@
                             </div>
                             <div class="col-3">
                                 <label for="complemento">Complemento:</label>
-                                <input type="text" class="form-control" name="complemento" id="complemento">
+                                <input type="text" class="form-control" name="complemento" id="complementoEditar">
                             </div>
                         </div>
                         <div class="row">
@@ -296,6 +296,7 @@
                 let numero = document.querySelector('#numeroEditar');
                 let cidade = document.querySelector('#cidadeEditar');
                 let bairro = document.querySelector('#bairroEditar');
+                let complemento = document.querySelector('#complementoEditar');
                 let idUnidade = document.querySelector('#id');
 
                 unidade.value = dados.unidade;
@@ -303,6 +304,7 @@
                 endereco.value = dados.endereco;
                 cidade.value = dados.cidade;
                 bairro.value = dados.bairro;
+                complemento.value = dados.complemento;
                 numero.value = dados.numero;
                 document.getElementById('instituicaoEditar').value = dados.instituicoes_id;
                 idUnidade.value = id;

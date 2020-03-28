@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Atendentes extends Model
 {
     protected $table = 'atendentes';
+    public $timestamps = false;
 }
