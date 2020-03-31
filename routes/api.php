@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use App\Model\Unidade;
-use App\Model\User;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
