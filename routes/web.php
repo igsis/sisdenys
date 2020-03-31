@@ -31,6 +31,9 @@ Route::post('/login/do','AuthController@autenticacao')->name('login.aut');
 Route::get('/registro/{login}','AuthController@registro')->name('registrar');
 Route::post('/registro/do','AuthController@cadastrarUser')->name('registrar.do');
 
+//Meu usuário
+Route::get('/editar/{id}', 'UserController@edit')->name('minha_conta');
+Route::post('/update','UserController@update')->name('editar');
 
 //chamados usuario
 Route::get('/chamados','ChamadoUserController@index')->name('chamados');

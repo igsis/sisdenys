@@ -88,7 +88,7 @@
                 @endif
                 <li class="nav-header">Minha Conta</li>
                 <li class="nav-item">
-                    <a href="{{route('chamados')}}" class="nav-link">
+                    <a href="{{route('minha_conta', Auth::user()->id)}}" class="nav-link">
                         <i class="fas fa-user"></i>
                         <p>
                             Meu usuário

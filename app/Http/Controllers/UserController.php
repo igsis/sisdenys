@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\TipoAcesso;
 use App\Model\Unidade;
-use App\Model\User;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -65,9 +65,12 @@ class UserController extends Controller
      * @param  \App\Model\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $unidades = Unidade::all();
+        $tipoAcessos = TipoAcesso::all();
+        return view('meu_usuario', compact('user', 'unidades', 'tipoAcessos'));
     }
 
     /**
@@ -88,11 +91,11 @@ class UserController extends Controller
         $user->nome = $request->nome;
         $user->email = $request->email;
         $user->telefone = $request->telefone;
-        $user->tipo_acesso_id = $request->tipoAcesso;
+//        $user->tipo_acesso_id = $request->tipoAcesso;
         $user->unidade_id = $request->unidade;
 
         if ($user->save()){
-            return redirect()->route('usuarios')->with('save','Editado com sucesso');
+            return redirect()->back()->with('save','Editado com sucesso');
         }
 
         return redirect()->route('usuarios')->with('error','Falha ao fazer alteração');
