@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/logar/',function (){
-   \Illuminate\Support\Facades\Auth::loginUsingId('9');
+   \Illuminate\Support\Facades\Auth::loginUsingId('1');
    $user = \Illuminate\Support\Facades\Auth::user();
    session()->put('user',$user);
-
+   echo 'Logado no usuario teste';
 });
 
 Route::get('/', function () {
