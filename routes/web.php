@@ -20,6 +20,11 @@ Route::get('/logar/',function (){
    echo 'Logado no usuario teste';
 });
 
+Route::get('/me',function (){
+    $user = \App\User::all();
+   echo json_encode($user);
+});
+
 Route::get('/', function () {
     return view('index');
 })->name('home')->middleware('auth');
