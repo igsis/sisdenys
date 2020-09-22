@@ -46,6 +46,20 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapWebRoutesInstituicao();
+
+        $this->mapWebRoutesUnidade();
+
+        $this->mapWebRoutesUser();
+
+        $this->mapWebRoutesTipoUsuario();
+
+        $this->mapWebRoutesGrupoChamado();
+
+        $this->mapWebRoutesChamado();
+
+        $this->mapWebRoutesTipoChamado();
+               
         //
     }
 
@@ -59,10 +73,66 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
+    protected function mapWebRoutesInstituicao()
+    {
+      Route::prefix('instituicao')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\Instituicao')
+        ->group(base_path('routes/Instituicao.php'));
+    }
+
+    protected function mapWebRoutesUnidade()
+    {
+      Route::prefix('unidade')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\Unidade')
+        ->group(base_path('routes/Unidade.php'));
+    }
+
+    protected function mapWebRoutesUser()
+    {
+      Route::prefix('user')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\User')
+        ->group(base_path('routes/User.php'));
+    }
+
+    protected function mapWebRoutesTipoUsuario()
+    {
+      Route::prefix('tipousuario')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\TipoUsuario')
+        ->group(base_path('routes/TipoUsuario.php'));
+    }
+
+    protected function mapWebRoutesGrupoChamado()
+    {
+      Route::prefix('grupochamado')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\GrupoChamado')
+        ->group(base_path('routes/GrupoChamado.php'));
+    }
+
+    protected function mapWebRoutesChamado()
+    {
+      Route::prefix('chamado')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\Chamado')
+        ->group(base_path('routes/Chamado.php'));
+    }    
+
+    protected function mapWebRoutesTipoChamado()
+    {
+      Route::prefix('tipochamado')
+        ->middleware('web')
+        ->namespace('App\Http\Controllers\TipoChamado')
+        ->group(base_path('routes/TipoChamado.php'));
+    } 
+    
     /**
      * Define the "api" routes for the application.
      *
@@ -73,8 +143,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/api.php'));
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 }
